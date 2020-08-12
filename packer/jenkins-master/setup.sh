@@ -3,7 +3,7 @@
 echo "Install Jenkins stable release"
 useradd -d /var/lib/jenkins -s /bin/bash jenkins
 yum remove -y java
-yum install -y java-1.8.0-openjdk
+yum install -y java-1.8.0-openjdk unzip
 curl -o /etc/yum.repos.d/jenkins.repo -L http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
 rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
 yum install -y jenkins
@@ -35,8 +35,8 @@ mv /tmp/disable-cli.groovy /var/lib/jenkins/init.groovy.d/disable-cli.groovy
 mv /tmp/csrf-protection.groovy /var/lib/jenkins/init.groovy.d/csrf-protection.groovy
 mv /tmp/disable-jnlp.groovy /var/lib/jenkins/init.groovy.d/disable-jnlp.groovy
 #mv /tmp/jenkins.install.UpgradeWizard.state /var/lib/jenkins/jenkins.install.UpgradeWizard.state
-mv /tmp/node-agent.groovy /var/lib/jenkins/init.groovy.d/node-agent.groovy
-chown -R jenkins:jenkins /var/lib/jenkins/jenkins.install.UpgradeWizard.state
+#mv /tmp/node-agent.groovy /var/lib/jenkins/init.groovy.d/node-agent.groovy
+#chown -R jenkins:jenkins /var/lib/jenkins/jenkins.install.UpgradeWizard.state
 mv /tmp/jenkins /etc/sysconfig/jenkins
 chmod +x /tmp/install-plugins.sh
 bash /tmp/install-plugins.sh
